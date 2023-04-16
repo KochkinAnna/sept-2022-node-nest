@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpStatus,
+  Param,
   Patch,
   Post,
   Req,
@@ -11,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/users.dto';
 import { UsersService } from './users.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiParam, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')
@@ -19,8 +20,7 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Get()
-  async getUsersList() {
-  }
+  async getUsersList() {}
 
   @Post()
   async createUser(
@@ -33,11 +33,25 @@ export class UsersController {
       .json(await this.userService.createUser(body));
   }
 
-  @Delete('/:id')
-  async deleteUser() {}
+  @Delete('/:userId')
+  async deleteUser(
+    @Req() req: any,
+    @Res() res: any,
+    @Param('userId') userId: string,
+  ) {
+    console.log(userId);
+    return res
+      .status(HttpStatus.OK)
+      .json(await this.userService.deleteUser(userId));
+  }
 
-  @Patch('/:id')
-  async updateUser() {}
+  @ApiParam({ name: 'userId', required: true })
+  @Patch('/:userId')
+  async updateUser(
+      @Req() req: any,
+      @Res() res: any,
+      @Param('userId') userId: string,
+  ) {}
 
   @Post('/animals/:id')
   async addNewPet() {}

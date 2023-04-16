@@ -9,4 +9,9 @@ export class UsersService {
     this.users.push(userData);
     return this.users;
   }
+
+  async deleteUser(userId: string) {
+    const user = this.users.find((item) => item.id === userId);
+    return this.users;
+  }
 }
