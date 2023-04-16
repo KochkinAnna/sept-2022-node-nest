@@ -31,7 +31,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   city: string;
 
-  @ApiProperty({ required: false, example: 'false' })
+  @ApiProperty()
   @IsBoolean()
   @IsOptional()
   status: boolean;
