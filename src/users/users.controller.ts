@@ -20,8 +20,26 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Get()
-  async getUsersList() {}
+  async getUsersList(@Req() req: any, @Res() res: any) {
+    return res.status(HttpStatus.OK).json(await this.userService.getUserList());
+  }
 
+  @ApiParam({ name: 'userId', required: true })
+  @Get('/:userId')
+  async getUserInfo(
+    @Req() req: any,
+    @Res() res: any,
+    @Param('userId') userId: string,
+  ) {
+    return res
+      .status(HttpStatus.OK)
+      .json(await this.userService.getUserById(userId));
+  }
+
+  // @ApiOkResponse({
+  //   description: 'The record has been successfully created.',
+  //   type: User,
+  // })
   @Post()
   async createUser(
     @Req() req: any,
@@ -39,7 +57,6 @@ export class UsersController {
     @Res() res: any,
     @Param('userId') userId: string,
   ) {
-    console.log(userId);
     return res
       .status(HttpStatus.OK)
       .json(await this.userService.deleteUser(userId));
@@ -48,10 +65,15 @@ export class UsersController {
   @ApiParam({ name: 'userId', required: true })
   @Patch('/:userId')
   async updateUser(
-      @Req() req: any,
-      @Res() res: any,
-      @Param('userId') userId: string,
-  ) {}
+    @Req() req: any,
+    @Res() res: any,
+    @Param('userId') userId: string,
+  ) {
+    // return res
+    //     .status(HttpStatus.CREATED)
+    //     .json(await this.userService.updateUser(userId));
+  }
+  }
 
   @Post('/animals/:id')
   async addNewPet() {}
