@@ -12,10 +12,11 @@ export class UsersService {
     return this.prismaService.user.create({
       data: {
         name: userData.name,
-        age: userData.age,
-        email: userData.email,
         city: userData.city,
         status: userData.status,
+        age: userData.age,
+        email: userData.email,
+        avatar: userData.avatar,
       },
     });
   }
@@ -45,8 +46,8 @@ export class UsersService {
   }
 
   async deleteUser(userId: string) {
-    return this.prismaService.user.delete({
-      where: { id: Number(userId) },
-    });
+    // const user = this.users.find((item) => item.id === id);
+    // //slice на вибір
+    // return this.users;
   }
 }

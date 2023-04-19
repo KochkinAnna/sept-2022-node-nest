@@ -1,5 +1,4 @@
 import {
-  IS_PHONE_NUMBER,
   IsBoolean,
   IsEmail,
   IsNotEmpty,
@@ -10,29 +9,33 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
-  @ApiProperty({ required: true, example: 'Anna' })
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  @ApiProperty({ required: false, example: '32' })
+  @ApiProperty({ required: false })
   @IsNumber()
   @IsOptional()
   age: number;
 
-  @ApiProperty({ required: true, example: 'user@gmail.com' })
+  @ApiProperty({ required: true, example: 'user@mail.com' })
   @IsString()
   @IsEmail()
   @IsNotEmpty()
   email: string;
 
-  @ApiProperty({ required: true, example: 'Lviv' })
+  @ApiProperty()
   @IsString()
-  @IsNotEmpty()
   city: string;
 
   @ApiProperty()
   @IsBoolean()
   @IsOptional()
   status: boolean;
+
+  @ApiProperty()
+  avatar: string;
 }
+
+// name, age, email, city, status
