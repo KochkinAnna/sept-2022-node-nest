@@ -38,4 +38,3 @@ export class CreateUserDto {
   avatar: string;
 }
 
-// name, age, email, city, status
