@@ -7,7 +7,7 @@ import { PetsService } from '../pets/pets.service';
 import { PrismaModule } from '../core/orm/prisma.module';
 
 @Module({
-  imports: [forwardRef(() => PetsModule), PrismaModule],
+  imports: [PrismaModule, forwardRef(() => PetsModule)],
   controllers: [UsersController],
   providers: [PrismaService, UsersService, PetsService],
 })
