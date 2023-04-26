@@ -37,4 +37,3 @@ export class CreateUserDto {
   @ApiProperty()
   avatar: string;
 }
-

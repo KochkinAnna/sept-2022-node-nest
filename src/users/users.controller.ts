@@ -16,14 +16,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/users.dto';
 import { UsersService } from './users.service';
-import {
-  ApiCreatedResponse,
-  ApiOkResponse,
-  ApiParam,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
-import { User } from '@prisma/client';
+import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { editFileName, imageFileFilter } from '../core/file-upload/file.upload';
