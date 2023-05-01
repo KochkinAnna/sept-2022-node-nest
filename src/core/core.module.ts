@@ -10,7 +10,7 @@ import * as process from 'process';
     MailerModule.forRoot({
       transport: `smtp://${process.env.MAILER_USER}:${process.env.MAILER_PASS}@${process.env.MAILER_SMTP}`,
       defaults: {
-        from: '"nest-bonus" <september@nestjs.com>',
+        from: '"nest-sept-2022" <anna.kochkina.33@gmail.com>',
       },
       template: {
         dir: path.join(__dirname, '..', '..', '/templates'),
